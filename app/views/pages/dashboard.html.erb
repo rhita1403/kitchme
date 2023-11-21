@@ -9,7 +9,7 @@
 <h2>My bookings</h2>
 <ul>
   <% @user.bookings.each do |booking| %>
-    <li><%= booking.kitchen.name%></li>
+    <li><%= booking.kitchen.name%>
     <li><%= booking.start_date%></li>
     <li><%= booking.end_date%></li>
   <% end %>
