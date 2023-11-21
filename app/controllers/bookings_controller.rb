@@ -1,15 +1,11 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: :destroy
 
-  def new
-    @booking = Booking.new
-  end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.kitchen = @kitchen
     @booking.save
-    redirect_to kitchen_path(@kitchen)
+    redirect_to kitchens_path
   end
 
   def update
@@ -24,10 +20,6 @@ class BookingsController < ApplicationController
   end
 
   private
-
-  def set_booking
-    @booking = Booking.find(params[:id])
-  end
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :confirmed)

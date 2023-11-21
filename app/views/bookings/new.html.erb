@@ -1,8 +1,8 @@
-<%= simple_form_for(@bookings) do |f| %>
+<%= simple_form_for [@kitchen, @booking] do |f| %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.input :confirmed %>
   <%= f.submit %>
 <% end %>
 
-<p><%= link_to "back to bookings", bookings_path %></p>
+<p><%= link_to "back to bookings", kitchen_path(@kitchen) %></p>
