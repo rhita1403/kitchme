@@ -1,0 +1,17 @@
+<h1>"here is my dashboard"</h1>
+<h2>My kitchens</h2>
+<ul>
+  <% @user.kitchens.each do |kitchen| %>
+    <li><%= link_to kitchen.name, kitchen_path(kitchen) %></li>
+  <% end %>
+<br>
+</ul>
+<h2>My bookings</h2>
+<ul>
+  <% @user.bookings.each do |booking| %>
+    <li><%= booking.kitchen.name%></li>
+    <li><%= booking.start_date%></li>
+    <li><%= booking.end_date%></li>
+  <% end %>
+</ul>
+<br>
