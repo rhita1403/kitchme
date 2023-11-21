@@ -20,6 +20,9 @@
             <th scope="row">Equipment</th>
             <td><%= @kitchen.equipment %></td>
           </tr>
+          <% @kitchen.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
         </tbody>
       </table>
       </div>
