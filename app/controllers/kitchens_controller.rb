@@ -10,6 +10,15 @@ class KitchensController < ApplicationController
     @kitchen = Kitchen.new
   end
 
+  def delete
+    @kitchen = Kitchen.find(params[:id])
+    @kitchen.destroy
+  end
+
+  def show
+    @kitchen = Kitchen.find(params[:id])
+  end
+
   def create
     @kitchen = Kitchen.new(kitchen_params)
     @kitchen.user = current_user
