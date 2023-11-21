@@ -3,10 +3,7 @@ class KitchensController < ApplicationController
     @kitchens = Kitchen.all
   end
 
-  before_action :set_user, only: %i[new create]
-
   def new
-    @user = User.find(params[:user_id])
     @kitchen = Kitchen.new
   end
 
@@ -32,11 +29,7 @@ class KitchensController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
   def kitchen_params
-    params.require(:kitchen).permit(:content)
+    params.require(:kitchen).permit(:name, :address, :capacity, :price, :equipment)
   end
 end
