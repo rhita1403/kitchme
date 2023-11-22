@@ -1,14 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <div class="col-12">
       <h1>All kitchens</h1>
-      <ul class="list-group mb-3">
-        <% @kitchens.each do |kitchen| %>
-          <li class="list-group-item">
-            <%= link_to kitchen.name, kitchen_path(kitchen) %>
-          </li>
-        <% end %>
-      </ul>
+        <div class="row">
+          <% @kitchens.each do |kitchen| %>
+             <div class="col-4">
+               <div class="kitchen_card">
+                 <% if kitchen.photos.attached?  %>
+                 <%= cl_image_tag kitchen.photos.first.key, class: "img_index"%>
+                 <% else %>
+                 <%= image_tag "https://source.unsplash.com/random", class: "img_index"  %>
+                 <% end %>
+                 <h5 class="card-title"><%= link_to kitchen.name, kitchen_path(kitchen) %></h5>
+               </div>
+             </div>
+          <% end %>
+        </div>
+      <%= link_to "Add a new kitchen", new_kitchen_path, class: 'btn btn-primary' %>
     </div>
   </div>
 </div>
