@@ -3,13 +3,16 @@
 <ul>
   <% @user.kitchens.each do |kitchen| %>
     <li><%= link_to kitchen.name, kitchen_path(kitchen) %></li>
-    <%= link_to "Delete the kitchen", kitchen_path(kitchen), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+      <%= link_to "Delete the kitchen", kitchen_path(kitchen), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
       <% kitchen.bookings.each do |booking|%>
       <li><%=booking.start_date%></li>
       <li><%=booking.end_date%></li>
       <li><%=booking.user.email%></li>
       <% end %>
   <% end %>
+  <div>
+    <%= link_to "Add a new kitchen", new_kitchen_path, class: 'btn btn-primary' %>
+  </div>
 <br>
 </ul>
 <h2>My bookings</h2>
