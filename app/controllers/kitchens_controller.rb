@@ -10,7 +10,7 @@ class KitchensController < ApplicationController
   def destroy
     @kitchen = Kitchen.find(params[:id])
     @kitchen.destroy
-    redirect_to kitchens_path, status: :see_other
+    redirect_to dashboard_path, status: :see_other
   end
 
   def show
