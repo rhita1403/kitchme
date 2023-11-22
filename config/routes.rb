@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get "dashboard", to: "pages#dashboard"
 
-  resources :kitchens, only: [:index, :new, :create, :destroy, :show] do
+  resources :kitchens, only: [:index, :new, :create, :destroy, :show, :edit, :update] do
     resources :bookings, only: [:new, :create]
   end
   resources :bookings, only: [:update, :destroy]
