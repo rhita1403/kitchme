@@ -40,9 +40,11 @@
       <div class="col-12">
         <ul>
           <% @user.bookings.each do |booking| %>
-            <li>You have booked <%= booking.kitchen.name%>
+            <li>You have booked <strong><%= booking.kitchen.name%></strong></li>
             <li>From <%= booking.start_date.strftime("%B %d, %Y")%></li>
             <li>To <%= booking.end_date.strftime("%B %d, %Y")%></li>
+            <li>For <%= booking.kitchen.price%>€ per day</li>
+            <li>Total <%= ((booking.end_date - booking.start_date).to_i)*booking.kitchen.price%>€</li>
             <%= link_to "Delete the booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
           <% end %>
         </ul>
