@@ -1,25 +1,52 @@
-<h1>"Dashboard"</h1>
-<h2>My kitchens</h2>
-<ul>
-  <% @user.kitchens.each do |kitchen| %>
-    <li><%= link_to kitchen.name, kitchen_path(kitchen) %></li>
-    <%= link_to "Delete the kitchen", kitchen_path(kitchen), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-      <% kitchen.bookings.each do |booking|%>
-      <li><%=booking.start_date%></li>
-      <li><%=booking.end_date%></li>
-      <li><%=booking.user.email%></li>
-      <% end %>
-  <% end %>
-<br>
-</ul>
-<h2>My bookings</h2>
-<ul>
-  <% @user.bookings.each do |booking| %>
-      <%= link_to "Delete the booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+<h1>My Dashboard</h1>
 
-    <li><%= booking.kitchen.name%>
-    <li><%= booking.start_date%></li>
-    <li><%= booking.end_date%></li>
-  <% end %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-bs-toggle="tab" href="#ownerSection">Owner Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="tab" href="#userSection">User Dashboard</a>
+  </li>
 </ul>
-<br>
+
+<div class="tab-content">
+<!-- Owner Section -->
+  <div class="tab-pane fade show active" id="ownerSection">
+    <div class="row mt-3">
+      <div class="col-12">
+        <ul>
+        <br>
+        <% @user.kitchens.each do |kitchen| %>
+          <li><strong><%= link_to kitchen.name, kitchen_path(kitchen) %></strong></li>
+            <%= link_to "Delete the kitchen", kitchen_path(kitchen), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+              <br>
+              <% kitchen.bookings.each do |booking|%>
+              <li> This kitchen is booked by <%=booking.user.email%></li>
+              <li>From <%=booking.start_date.strftime("%B %d, %Y")%></li>
+              <li>To <%=booking.end_date.strftime("%B %d, %Y")%></li>
+              <% end %>
+          <% end %>
+        </ul>
+        <div>
+          <%= link_to "Add a new kitchen", new_kitchen_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- User Section -->
+  <div class="tab-pane fade show" id="userSection">
+    <div class="row mt-3">
+      <div class="col-12">
+        <ul>
+          <% @user.bookings.each do |booking| %>
+            <li>You have booked <%= booking.kitchen.name%>
+            <li>From <%= booking.start_date.strftime("%B %d, %Y")%></li>
+            <li>To <%= booking.end_date.strftime("%B %d, %Y")%></li>
+            <%= link_to "Delete the booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
