@@ -6,13 +6,14 @@
   overflow: auto;
   border-radius: 6px;
   margin: 1rem;
-  filter: grayscale(1);
-  transition: 0.15s;
   box-shadow: 0px 4px 10px rgb(134, 134, 134);
 }
+.img_index {
+  transition: 0.15s;
+  filter: grayscale(0.7);
+}
 
-.kitchen_card:hover {
-  // scale: 1.1;
+.img_index:hover {
   filter: grayscale(0);
   cursor: pointer;
 }
@@ -23,6 +24,18 @@ img > .kitchen_card{
   height: 100px;
 
 }
+
+.delete_link {
+  color: black;
+  transition: 0.15s;
+  text-decoration: underline;
+}
+
+.delete_link:hover {
+  color: red;
+  scale: 1.1;
+}
+
 
 .img_index {
   max-width: 100%;
