@@ -1,4 +1,4 @@
-<div class="container margin-top-negative">
+<div class="container margin-top-negative m-auto">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
       <h1><%= @kitchen.name %></h1>
@@ -13,7 +13,7 @@
             <td><%= @kitchen.capacity %></td>
           </tr>
           <tr>
-            <th scope="row">Price</th>
+            <th scope="row">Price/day</th>
             <td><%= @kitchen.price %></td>
           </tr>
           <tr>
@@ -21,7 +21,7 @@
             <td><%= @kitchen.equipment %></td>
           </tr>
           <% @kitchen.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill%>
           <% end %>
           <%= link_to "update your kitchen", edit_kitchen_path, class: 'btn btn-primary' %>
         </tbody>
@@ -29,12 +29,17 @@
 
       </div>
     </div>
-    <div>
-      <%= simple_form_for [@kitchen, @booking] do |f| %>
-      <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
-      <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
-      <%= f.submit %>
-      <% end %>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-6 m-auto">
+        <h1>Book this kitchen</h1>
+        <div class="mt-3">
+          <%= simple_form_for [@kitchen, @booking] do |f| %>
+          <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+          <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+          <%= f.submit %>
+          <% end %>
+        </div>
+        </div>
       </div>
-  </div>
-</div>
+    </div>
