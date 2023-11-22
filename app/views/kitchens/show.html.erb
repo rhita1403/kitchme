@@ -28,13 +28,10 @@
 
       </div>
     </div>
-    <%= link_to "Delete the kitchen", @kitchen, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-
     <div>
       <%= simple_form_for [@kitchen, @booking] do |f| %>
       <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
       <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
-      <%= f.input :confirmed %>
       <%= f.submit %>
       <% end %>
       </div>
