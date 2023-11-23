@@ -1,19 +1,36 @@
 <div class="container">
+  <div class="col-sm-8 my-3">
+      <%= form_with url: kitchens_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Type a keyword"
+          %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
   <div class="row">
     <div class="col-12">
+    <div class="row justify-content-center">
       <h1>All kitchens</h1>
+      <h1>Toutes les cuisines</h1>
         <div class="row">
           <% @kitchens.each do |kitchen| %>
              <div class="col-md-4 m-auto">
                <div class="kitchen_card">
+               <%= link_to kitchen_path(kitchen) do %>
                  <% if kitchen.photos.attached?  %>
                  <%= cl_image_tag kitchen.photos.first.key, class: "img_index"%>
                  <% else %>
                  <%= image_tag "https://source.unsplash.com/random", class: "img_index"  %>
                  <% end %>
-                 <h5 class="card-title"><%= link_to kitchen.name, kitchen_path(kitchen) %></h5>
-                 <h6>Price/day:<%= kitchen.price %></h6>
-                 <h6>Address: <%= kitchen.address %></h6>
+                <% end %>
+                 <div class="description">
+                   <h5 class="card-title"><%= link_to kitchen.name, kitchen_path(kitchen) %></h5>
+                   <h6>Prix/jour: <%= kitchen.price %></h6>
+                   <h6>Adresse: <%= kitchen.address %></h6>
+                 </div>
                </div>
              </div>
           <% end %>
