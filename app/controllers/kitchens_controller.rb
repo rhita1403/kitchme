@@ -1,6 +1,9 @@
 class KitchensController < ApplicationController
   def index
     @kitchens = Kitchen.all
+    if params[:query].present?
+      @kitchens = @kitchens.where("name ILIKE ?", "%#{params[:query]}%")
+    end
     @markers = @kitchens.geocoded.map do |kitchen|
       {
         lat: kitchen.latitude,
