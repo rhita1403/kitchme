@@ -3,17 +3,10 @@
 
   <ul class="nav nav-tabs">
     <li class="nav-item">
-<<<<<<< HEAD
       <a class="nav-link active" data-bs-toggle="tab" href="#ownerSection">Proprietaire</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="tab" href="#userSection">Locataire</a>
-=======
-      <a class="nav-link active" data-bs-toggle="tab" href="#userSection">User Dashboard</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#ownerSection">Owner Dashboard</a>
->>>>>>> master
     </li>
   </ul>
 
@@ -45,6 +38,7 @@
                       <li>Au <%=booking.end_date.strftime("%B %d, %Y")%></li>
                       <% end %>
                     </div>
+                    <div class="link_box"><%= link_to "Mets à jour ta cuisine", edit_kitchen_path(kitchen), class: 'btn btn-primary' %></div>
                     <div class="link_box"><%= link_to "Supprimer", kitchen_path(kitchen), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?" }, class:"delete_link"%></div>
                   </div>
                   </div>
@@ -66,21 +60,12 @@
         <div class="col-12">
           <ul>
             <% @user.bookings.each do |booking| %>
-<<<<<<< HEAD
               <li>Vous avez réservé <strong><%= booking.kitchen.name%></strong></li>
               <li>Du <%= booking.start_date.strftime("%B %d, %Y")%></li>
               <li>Au <%= booking.end_date.strftime("%B %d, %Y")%></li>
               <li>Pour <%= booking.kitchen.price%>€ par jour</li>
               <li>Prix total: <%= ((booking.end_date - booking.start_date).to_i)*booking.kitchen.price%>€</li>
               <%= link_to "Supprimer la réservation ", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
-=======
-              <li>You have booked <strong><%= booking.kitchen.name%></strong></li>
-              <li>From <%= booking.start_date.strftime("%B %d, %Y")%></li>
-              <li>To <%= booking.end_date.strftime("%B %d, %Y")%></li>
-              <li>For <%= booking.kitchen.price%>€ per day</li>
-              <li>Total <%= ((booking.end_date - booking.start_date + 1).to_i)*booking.kitchen.price%>€</li>
-              <%= link_to "Delete the booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
->>>>>>> master
             <% end %>
           </ul>
         </div>
