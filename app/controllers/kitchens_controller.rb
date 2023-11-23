@@ -2,7 +2,8 @@ class KitchensController < ApplicationController
   def index
     @kitchens = Kitchen.all
     if params[:query].present?
-      @kitchens = @kitchens.where("name ILIKE ?", "%#{params[:query]}%")
+      sql_subquery = "name ILIKE :query OR equipment ILIKE :query OR address ILIKE :query"
+      @kitchens = @kitchens.where(sql_subquery, query: "%#{params[:query]}%")
     end
     @markers = @kitchens.geocoded.map do |kitchen|
       {
