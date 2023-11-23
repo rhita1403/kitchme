@@ -41,22 +41,32 @@ img > .kitchen_card{
   display: flex;
 }
 
+.card .link_box {
+  margin: 0px;
+  gap: 5px;
+}
+
 
 // .kitchen_card .stretched-link {
 //   position: relative;
 // }
 
-.delete_link {
+.delete_link, .edit_link {
   color: black;
   transition: 0.15s;
   text-decoration: underline;
   width: fit-content;
+  margin: 0px 5px 0px 0px;
+  display: inline-block;
 }
 
 .delete_link:hover {
   color: red;
 }
 
+.edit_link:hover {
+  color: gold;
+}
 
 .img_index {
   max-width: 100%;

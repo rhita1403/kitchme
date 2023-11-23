@@ -15,14 +15,24 @@
   width: 100%;
   background-color: #B6D6CB;
   padding: 10px;
-  color: #000; /* Set the text color to a suitable color */
-  text-align: center; /* Center the text within the button */
-  text-decoration: none; /* Remove underlines if the button is a link */
-  border: 1px solid #DEE2E6; /* Add a border for a cleaner look */
-  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #DEE2E6;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .btn-booking:hover {
-  background-color: #f1faf7; /* Change the background color on hover */
+  background-color: #f1faf7;
+}
+
+@media only screen and (max-width: 768px) {
+  .row {
+    flex-direction:column;
+  }
+
+  .kitchen-booking-card>img {
+    width: 105%;
+  }
 }

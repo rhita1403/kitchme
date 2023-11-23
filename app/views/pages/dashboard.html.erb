@@ -60,12 +60,17 @@
         <div class="col-12">
           <ul>
             <% @user.bookings.each do |booking| %>
-              <li>Vous avez réservé <strong><%= booking.kitchen.name%></strong></li>
-              <li>Du <%= booking.start_date.strftime("%B %d, %Y")%></li>
-              <li>Au <%= booking.end_date.strftime("%B %d, %Y")%></li>
-              <li>Pour <%= booking.kitchen.price%>€ par jour</li>
-              <li>Prix total: <%= ((booking.end_date - booking.start_date).to_i)*booking.kitchen.price%>€</li>
-              <%= link_to "Supprimer la réservation ", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}%>
+              <div class="card p-3 mb-3">
+                <li><h3>Vous avez réservé <strong><%= booking.kitchen.name%></strong></h3></li>
+                <li>Du <%= booking.start_date.strftime("%B %d, %Y")%></li>
+                <li>Au <%= booking.end_date.strftime("%B %d, %Y")%></li>
+                <li>Pour <%= booking.kitchen.price%>€ par jour</li>
+                <li>Prix total: <%= ((booking.end_date - booking.start_date).to_i)*booking.kitchen.price%>€</li>
+                <div class="link_box">
+                  <%= link_to "Supprimer", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}, class:"delete_link"%>
+                  <%= link_to "Modifier", "http://localhost:3000/dashboard", class:"edit_link"%>
+                </div>
+              </div>
             <% end %>
           </ul>
         </div>
