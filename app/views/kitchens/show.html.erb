@@ -5,7 +5,7 @@
       <div class="kitchen-booking-card">
         <h3><%= @kitchen.name %></h3>
         <% @kitchen.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill%>
+          <%= cl_image_tag photo.key, crop: :fill%>
         <% end %>
       </div>
       <div class="kitchen-booking-card">
