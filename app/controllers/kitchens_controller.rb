@@ -37,6 +37,16 @@ class KitchensController < ApplicationController
     end
   end
 
+  def edit
+    @kitchen = Kitchen.find(params[:id])
+  end
+
+  def update
+    @kitchen = Kitchen.find(params[:id])
+    @kitchen.update(kitchen_params)
+    redirect_to edit_kitchen_path(@kitchen)
+  end
+
   private
 
   def kitchen_params
