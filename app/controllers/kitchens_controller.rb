@@ -2,7 +2,8 @@ class KitchensController < ApplicationController
   def index
     @kitchens = Kitchen.all
     if params[:query].present?
-      @kitchens = @kitchens.where("name ILIKE ?", "%#{params[:query]}%")
+      sql_subquery = "name ILIKE :query OR equipment ILIKE :query OR address ILIKE :query"
+      @kitchens = @kitchens.where(sql_subquery, query: "%#{params[:query]}%")
     end
     @markers = @kitchens.geocoded.map do |kitchen|
       {
@@ -12,6 +13,7 @@ class KitchensController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }
     end
+
   end
 
   def new
@@ -27,6 +29,14 @@ class KitchensController < ApplicationController
   def show
     @kitchen = Kitchen.find(params[:id])
     @booking = Booking.new
+    if @kitchen.geocode
+      @marker = [
+      lat: @kitchen.geocode[0],
+      lng: @kitchen.geocode[1],
+      info_window_html: render_to_string(partial: "info_window", locals: {kitchen: @kitchen}),
+      marker_html: render_to_string(partial: "marker")
+      ]
+    end
   end
 
   def create
@@ -47,7 +57,7 @@ class KitchensController < ApplicationController
   def update
     @kitchen = Kitchen.find(params[:id])
     @kitchen.update(kitchen_params)
-    redirect_to edit_kitchen_path(@kitchen)
+    redirect_to kitchen_path(@kitchen)
   end
 
   private
