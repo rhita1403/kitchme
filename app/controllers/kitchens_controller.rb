@@ -13,6 +13,7 @@ class KitchensController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }
     end
+
   end
 
   def new
@@ -28,6 +29,14 @@ class KitchensController < ApplicationController
   def show
     @kitchen = Kitchen.find(params[:id])
     @booking = Booking.new
+    if @kitchen.geocode
+      @marker = [
+      lat: @kitchen.geocode[0],
+      lng: @kitchen.geocode[1],
+      info_window_html: render_to_string(partial: "info_window", locals: {kitchen: @kitchen}),
+      marker_html: render_to_string(partial: "marker")
+      ]
+    end
   end
 
   def create
