@@ -47,7 +47,7 @@ class KitchensController < ApplicationController
   def update
     @kitchen = Kitchen.find(params[:id])
     @kitchen.update(kitchen_params)
-    redirect_to edit_kitchen_path(@kitchen)
+    redirect_to kitchen_path(@kitchen)
   end
 
   private
