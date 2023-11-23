@@ -27,7 +27,7 @@
                 <% end %>
                  <div class="description">
                    <h5 class="card-title"><%= link_to kitchen.name, kitchen_path(kitchen) %></h5>
-                   <h6>Prix/jour: <%= kitchen.price %></h6>
+                   <h6>Prix/jour: <%= kitchen.price %>€</h6>
                    <h6>Adresse: <%= kitchen.address %></h6>
                  </div>
                </div>
@@ -38,7 +38,7 @@
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-        ></div>
+        >
     </div>
   </div>
 </div>
