@@ -1,12 +1,11 @@
 class BookingsController < ApplicationController
-
   def create
     @booking = Booking.new(booking_params)
     @kitchen = Kitchen.find(params[:kitchen_id])
     @booking.kitchen = @kitchen
     @booking.user = current_user
     @booking.save
-    redirect_to dashboard_path
+    redirect_to dashboard_path(tab: "#userSection")
   end
 
   def update

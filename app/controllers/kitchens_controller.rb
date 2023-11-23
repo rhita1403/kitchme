@@ -1,6 +1,14 @@
 class KitchensController < ApplicationController
   def index
     @kitchens = Kitchen.all
+    @markers = @kitchens.geocoded.map do |kitchen|
+      {
+        lat: kitchen.latitude,
+        lng: kitchen.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {kitchen: kitchen}),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
   end
 
   def new
@@ -27,6 +35,16 @@ class KitchensController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @kitchen = Kitchen.find(params[:id])
+  end
+
+  def update
+    @kitchen = Kitchen.find(params[:id])
+    @kitchen.update(kitchen_params)
+    redirect_to edit_kitchen_path(@kitchen)
   end
 
   private
