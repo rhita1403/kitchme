@@ -1,0 +1,28 @@
+.kitchen-booking-card {
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
+  background: #f1faf7;
+  padding: 20px;
+  border-radius: 3px;
+}
+
+.kitchen-booking-card p {
+  text-align: left;
+}
+
+.btn-booking {
+  display: block;
+  width: 100%;
+  background-color: #B6D6CB;
+  padding: 10px;
+  color: #000; /* Set the text color to a suitable color */
+  text-align: center; /* Center the text within the button */
+  text-decoration: none; /* Remove underlines if the button is a link */
+  border: 1px solid #DEE2E6; /* Add a border for a cleaner look */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+  cursor: pointer;
+}
+
+.btn-booking:hover {
+  background-color: #f1faf7; /* Change the background color on hover */
+}
