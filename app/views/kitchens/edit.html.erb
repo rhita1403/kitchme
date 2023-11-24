@@ -8,11 +8,11 @@
 
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
-          <%= f.input :name, as: :string %>
-          <%= f.input :address, as: :string %>
-          <%= f.input :capacity, as: :integer %>
-          <%= f.input :price, as: :integer %>
-          <%= f.input :equipment, as: :text %>
+          <%= f.input :name, label: "Nom"%>
+          <%= f.input :address, label: "Adresse" %>
+          <%= f.input :capacity, label: "Capacité" %>
+          <%= f.input :price, label: "Prix par jour" %>
+          <%= f.input :equipment, label: "Equipement" %>
 
           <%= f.submit 'Mettre à jour' %>
       <% end %>
@@ -20,4 +20,4 @@
   </div>
 </div>
 
-<p><%= link_to "retour au tableau de bord", dashboard_path, class: 'btn btn-primary' %></p>
+<p><%= link_to "Retour au Tableau de Bord", dashboard_path, class: 'btn btn-primary' %></p>
