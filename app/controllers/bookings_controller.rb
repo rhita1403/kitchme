@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     @booking.kitchen = @kitchen
     @booking.user = current_user
     @booking.save
-    redirect_to dashboard_path(tab: "#userSection")
+    redirect_to dashboard_path
   end
 
   def update
@@ -17,6 +17,12 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to dashboard_path
+  end
+
+  def confirm
+    @booking = Booking.find(params[:id])
+    @booking.update(confirmed: true)
+    redirect_to dashboard_path, notice: 'Réservation confirmée avec succès.'
   end
 
   private

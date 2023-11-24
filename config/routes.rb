@@ -8,11 +8,16 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get "dashboard", to: "pages#dashboard", as: 'dashboard'
-
+  # get "confirm", to: "bookings#confirm", as: 'confirm'
   resources :kitchens, only: [:index, :new, :create, :destroy, :show, :edit, :update] do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:update, :destroy]
+  resources :bookings, only: [:update, :destroy]  do
+    member do
+      patch :confirm
+    end
+  end
+
   # Defines the root path route ("/")
   # root "posts#index"
 end
