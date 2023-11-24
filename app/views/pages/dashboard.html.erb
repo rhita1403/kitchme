@@ -37,9 +37,9 @@
                       <li>Du <%=booking.start_date.strftime("%d/%m/%Y")%></li>
                       <li>Au <%=booking.end_date.strftime("%d/%m/%Y")%></li>
                       <% if booking.confirmed %>
-                        <p>Réservation acceptée</p>
+                        <p>Réservation acceptée.</p>
                         <% else %>
-                          <%= button_to 'Confirmer', confirm_booking_path(booking), method: :patch, class: 'btn btn-primary' %>
+                          <%= button_to 'Confirmer la réservation', confirm_booking_path(booking), method: :patch, class: 'confirm_link' %>
                           <% end %>
                       <% end %>
 
@@ -71,12 +71,12 @@
             <% @user.bookings.each do |booking| %>
               <div class="card p-3 mb-3">
                 <li><h3>Vous avez réservé <strong><%= booking.kitchen.name%></strong></h3></li>
-                <li>Du <%= booking.start_date.strftime("%B %d, %Y")%></li>
-                <li>Au <%= booking.end_date.strftime("%B %d, %Y")%></li>
-                <li>Pour <%= booking.kitchen.price%>€ par jour</li>
+                <li>Du <%= booking.start_date.strftime("%d/%m/%Y")%></li>
+                <li>Au <%= booking.end_date.strftime("%d/%m/%Y")%></li>
+                <li><%= ((booking.end_date - booking.start_date).to_i) %> jours pour <%= booking.kitchen.price%>€ par jour</li>
                 <li>Prix total: <%= ((booking.end_date - booking.start_date).to_i)*booking.kitchen.price%>€</li>
                 <% if booking.confirmed %>
-                  <p>votre réservation est acceptée</p>
+                  <p id="reservation">Votre réservation est acceptée.</p>
                 <% end %>
                 <div class="link_box">
                   <%= link_to "Supprimer", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?"}, class:"delete_link"%>

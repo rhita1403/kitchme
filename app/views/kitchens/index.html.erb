@@ -3,10 +3,9 @@
       <%= form_with url: kitchens_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
               params[:query],
-              class: "form-control",
-              placeholder: "Type a keyword"
+              class: "form-control"
           %>
-        <%= submit_tag "Search", name: "", class: "search_button" %>
+        <%= submit_tag "Rechercher", name: "", class: "search_button" %>
       <% end %>
     </div>
   </div>
