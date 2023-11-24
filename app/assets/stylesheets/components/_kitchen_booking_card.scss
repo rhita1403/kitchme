@@ -4,10 +4,14 @@
   background: #f1faf7;
   padding: 20px;
   border-radius: 3px;
+
 }
+
 
 .kitchen-booking-card p {
   text-align: left;
+  margin: 5px;
+  padding: 0;
 }
 
 .btn-booking {
@@ -21,10 +25,11 @@
   border: 1px solid #DEE2E6;
   border-radius: 5px;
   cursor: pointer;
+  transition: 0.15s;
 }
 
 .btn-booking:hover {
-  background-color: #f1faf7;
+  box-shadow: 0px 2px 15px #afbbb7;
 }
 
 @media only screen and (max-width: 768px) {
@@ -35,4 +40,26 @@
   .kitchen-booking-card>img {
     width: 105%;
   }
+}
+
+@media only screen and(min-width: 1024px) {
+  .kitchen-booking-card>img{
+    width: 80%;
+  }
+}
+
+
+// Logos booking card
+
+.kitchen-booking-card i {
+  padding: 11px;
+  font-size: 14px;
+  background: none;
+  color: black;
+  margin: 0px;
+}
+
+.details_box {
+  display: flex;
+  align-items: center;
 }

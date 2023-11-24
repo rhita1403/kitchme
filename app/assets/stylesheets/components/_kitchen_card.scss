@@ -1,10 +1,12 @@
 .kitchen_card {
   background-color: aliceblue;
-  height: fit-content;
+  height: 489px;
   overflow: auto;
   border-radius: 6px;
   margin: 1rem;
   box-shadow: 0px 4px 10px rgb(134, 134, 134);
+  display: flex;
+  flex-direction: column;
 }
 
 .kitchen_card .description, .link_box {
@@ -33,10 +35,20 @@ img > .kitchen_card{
 }
 
 .kitchen_card .bottom {
-  height: 100%;
   display: flex;
   flex-direction: column;
+  flex-grow: 3;
 }
+
+.kitchen_card .description {
+  height: 100px;
+}
+
+.kitchen_card li {
+  list-style: none;
+}
+
+
 .kitchen_card .link_box {
   display: flex;
 }
@@ -44,6 +56,8 @@ img > .kitchen_card{
 .card .link_box {
   margin: 0px;
   gap: 5px;
+  height: fit-content;
+
 }
 
 
@@ -56,7 +70,7 @@ img > .kitchen_card{
   transition: 0.15s;
   text-decoration: underline;
   width: fit-content;
-  margin: 0px 5px 0px 0px;
+  margin: 0px 10px 5px 0px;
   display: inline-block;
 }
 
