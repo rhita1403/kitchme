@@ -1,1 +1,10 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates).
+
+Airbnb clone to rent kitchens between individuals.
+Main features & learnings :
+- Authentication & Devise
+- Geocoding
+- Authorization & Pundit
+- Images upload
+- Hosting (Heroku)
+
